@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Exam_Prep_Mock.Models.Section_B.Playstation>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h4 class="text-success">Playstation</h4>
+<hr />
+
+<div class="col-sm-12"> @* container and row *@
+    <table class="table table-bordered col-sm-offset-1 text-left"> @* table table-bordered  *@
+        <thead>
+            <tr>
+                <th class="col-sm-6">ID</th>
+                <th class="col-sm-1">Name</th>
+                <th class="col-sm-1">Model</th>
+                <th class="col-sm-1">Price</th>
+                <th class="col-sm-1">Ds Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="bg-primary col-sm-6">@item._ID</td>
+                    <td class="bg-success col-sm-1">@item._Name</td>
+                    <td class="bg-warning col-sm-1">@item._Model</td>
+                    <td class="bg-danger col-sm-1">@item._Price</td>
+                    <td>@item._dualShockRating</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

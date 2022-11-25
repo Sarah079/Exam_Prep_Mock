@@ -1,0 +1,35 @@
+﻿
+<div class="text-center">
+    <h1 class="display-4">Section c, Question 2</h1>
+    <p>Please create your graph for Question 2 below this sentence.</p>
+    <!--Create your chart for Q1 here-->
+    <div id="canvas">
+        <canvas id="chart"></canvas>
+    </div>
+    <!--Note: any scripts you create to answer this question must be placed in this file and not in another file-->
+    <!--Include chart js-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
+
+    <script>
+    $(document).ready(function ()
+    {
+        var chart = $('#chart');
+        var myChart = new Chart(chart,
+            {
+                type: 'bar',
+                data:
+                {
+                    labels: @Html.Raw(ViewBag.labels),
+                    datasets: [{
+                        label: 'Total Amount Spent by Customer Per Order',
+                        data: @Html.Raw(ViewBag.data),
+                        backgroundColor: @Html.Raw(ViewBag.backColors),
+                        borderColor: @Html.Raw(ViewBag.borderColors),
+                    }]
+                }
+            });
+    });
+    </script>
+
+</div>

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Question2";
+}
+
+<h2>Question2</h2>
+
+<!--------------------------------------Dont Touch This--------------------------------------->
+<style>
+    body {
+        background-color: black;
+        color: white
+    }
+</style>
+<br />
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form class="from-horizontal text-dark">
+                    <div class="fom-group">
+                        <label style="color:black">Playlist Name</label>
+                        <input class="form-control" type="text" id="playlist" />
+                    </div>
+                    <br />
+                    <button class="btn" style="border-radius:20px;background-color:#009c9e" id="btnAdd" type="button">
+                        Add Playlist
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------------Dont Touch This--------------------------------------->
+
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        //------------- Question 2--------------------\\
+        //*****Q2 memo ********/
+        $("#btnAdd").on('click', function () {
+            $.ajax({
+                url: "@Url.Action("Q2Index", "SectionA")",
+                type: "Post",
+                data: JSON.stringify({playlist: $("#playlist").val()}), //stringify
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    console.log(response.status)
+                    if (response.status == true) {
+                        alert("the playlist was successfully added");
+                    }
+                    else {
+                        alert("An unexpected error occurred. Try again later");
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+        });
+
+        //--------------------------------------------------------my attempt
+        $("#btnAdd").on('click', function () {
+            $.ajax({
+                url: "@Url.Action("Q2Index", "SectionA")",
+                type: "Post",
+                dataType: "json",
+                // needed to add data:
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var data = $("#playlist").text(); //make val()
+                },
+                error: function (error) {
+                    console.log(error);
+                    alert(@ViewBag.Message);
+                }
+            })
+        });
+        //-------------------------------------\\
+    </script>
+}
